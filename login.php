@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        header('Location: views/index.php'); // Ubah path ke index.php
+        header('Location: index.php'); // Ubah path ke index.php
         exit;
     } else {
         $error = "Username atau password salah.";
