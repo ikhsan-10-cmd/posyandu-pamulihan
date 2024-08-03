@@ -31,7 +31,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <ul class="navbar-nav me-auto">
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="views/tasks.php"><i class="fas fa-tasks"></i> Tugas</a>
+                            <a class="nav-link" href="tasks.php"><i class="fas fa-tasks"></i> Tugas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="views/balita.php"><i class="fas fa-baby"></i> Data Balita</a>

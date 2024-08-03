@@ -3,20 +3,6 @@ session_start();
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/includes/header.php';
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
-
-// Get username from database
-$user_id = $_SESSION['user_id'];
-$stmt = $db->prepare("SELECT username FROM admin WHERE id = :id");
-$stmt->bindParam(':id', $user_id);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-$username = $user['username'];
-
 // Fungsi untuk mendapatkan tugas hari ini
 function getTodayTasks($db) {
     $today = date('Y-m-d');
