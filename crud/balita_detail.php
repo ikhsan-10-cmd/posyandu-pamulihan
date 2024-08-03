@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../includes/header_dashboard.php';
 
 // Fungsi untuk mendapatkan nama balita berdasarkan id_balita
 function getBalitaName($db, $id_balita) {
@@ -69,19 +69,20 @@ $bulan_list = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'juli', 'a
     <title>Manajemen Balita</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
     <style>
+        body {
+            background-color: #f8f9fa;
+        }
         .title-container {
-            background: linear-gradient(45deg, #007bff, #6610f2);
-            padding: 2rem 0;
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            padding: 3rem 0;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         .animated-title {
             font-size: 2.5rem;
             font-weight: 700;
             color: #ffffff;
-            text-align: left;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             animation: fadeInDown 1s ease-out;
         }
@@ -96,40 +97,81 @@ $bulan_list = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'juli', 'a
             animation-fill-mode: both;
         }
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-30px);
-            }
-            60% {
-                transform: translateY(-15px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .card-header {
+            border-radius: 15px 15px 0 0 !important;
+            font-weight: 600;
+        }
+        .form-control, .btn {
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .table {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .table-responsive {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .header {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
 
+<header class="header animate__animated animate__fadeIn">
 <div class="title-container">
     <div class="container">
         <div class="row align-items-center">
@@ -143,15 +185,13 @@ $bulan_list = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'juli', 'a
         </div>
     </div>
 </div>
+</header>
 
-<!-- Bootstrap Bundle dengan Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<div class="container">
     <div class="row">
         <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <div class="card-header bg-primary text-white">
+            <div class="card h-100 animate-on-scroll">
+                <div class="card-header">
                     <h5 class="card-title mb-0">Tambah/Edit Pengukuran Balita</h5>
                 </div>
                 <div class="card-body">
@@ -206,7 +246,7 @@ $bulan_list = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'juli', 'a
                             </select>
                         </div>
                         
-                        <button type="submit" name="action" value="<?php echo isset($pengukuran) ? 'edit' : 'add'; ?>" class="btn btn-primary w-100">
+                        <button type="submit" name="action" value="<?php echo isset($pengukuran) ? 'edit' : 'add'; ?>" class="btn btn-primary w-100 mt-3">
                             <i class="fas fa-save me-2"></i>Simpan
                         </button>
                     </form>
@@ -215,8 +255,8 @@ $bulan_list = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'juli', 'a
         </div>
 
         <div class="col-lg-8">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
+            <div class="card animate-on-scroll">
+                <div class="card-header">
                     <h5 class="mb-0">Daftar Pengukuran Balita</h5>
                 </div>
                 <div class="card-body">
@@ -276,6 +316,21 @@ $bulan_list = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'juli', 'a
             document.getElementById('no').value = index;
         }
     }
+
+    // Animate elements on scroll
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        elements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top <= windowHeight * 0.75) {
+                element.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
 </script>
 
 </body>

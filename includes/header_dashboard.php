@@ -6,11 +6,16 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // Periksa apakah pengguna sudah login
 if (!isset($_SESSION['user'])) {
-    header('Location: ../login/login.php');
+    header('Location: ../auth/login.php');
     exit;
 }
 
 $user = $_SESSION['user'];
+
+// Fungsi untuk menentukan apakah halaman saat ini aktif
+function isActive($page) {
+    return (basename($_SERVER['PHP_SELF']) == $page) ? 'active' : '';
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +24,7 @@ $user = $_SESSION['user'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Posyandu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         .navbar-brand img {
@@ -38,8 +43,8 @@ $user = $_SESSION['user'];
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="logo/logo.png" alt="Logo Posyandu" class="d-inline-block align-top">
+            <a class="navbar-brand" href="../views/dashboard.php">
+                <img src="../logo/logo.png" alt="Logo Posyandu" class="d-inline-block align-top">
                 Posyandu
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,24 +53,28 @@ $user = $_SESSION['user'];
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="tasks.php"><i class="fas fa-tasks"></i> Tugas</a>
+                        <a class="nav-link <?php echo isActive('dashboard.php'); ?>" href="../views/dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="views/balita.php"><i class="fas fa-baby"></i> Data Balita</a>
+                        <a class="nav-link <?php echo isActive('tasks.php'); ?>" href="../views/tasks.php"><i class="fas fa-tasks"></i> Tugas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="crud/balita_crud.php"><i class="fas fa-user-edit"></i> Manajemen Balita</a>
+                        <a class="nav-link <?php echo isActive('balita.php'); ?>" href="../views/balita.php"><i class="fas fa-baby"></i> Data Balita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="crud/balita_detail.php"><i class="fas fa-ruler"></i> Pengukuran Balita</a>
+                        <a class="nav-link <?php echo isActive('balita_crud.php'); ?>" href="../crud/balita_crud.php"><i class="fas fa-user-edit"></i> Manajemen Balita</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo isActive('balita_detail.php'); ?>" href="../crud/balita_detail.php"><i class="fas fa-ruler"></i> Pengukuran Balita</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
+            
                     <li class="nav-item">
-                        <a class="nav-link" href="reset_password.php"><i class="fas fa-key"></i> Reset Password</a>
+                        <a class="nav-link" href="../auth/add_admin.php"><i class="fas fa-key"></i> Tambah Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a class="nav-link" href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </li>
                 </ul>
             </div>
