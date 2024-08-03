@@ -1,6 +1,13 @@
 <?php
+session_start();
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/header_dashboard.php';
+
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['user'])) {
+    header('Location: ../auth/login.php');
+    exit;
+}
 
 // Handle form submission
 $id_balita = isset($_POST['id_balita']) ? (int)$_POST['id_balita'] : 1;
