@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../includes/header_dashboard.php';
 
 // Handle form submission
 $id_balita = isset($_POST['id_balita']) ? (int)$_POST['id_balita'] : 1;
@@ -106,6 +106,7 @@ $months = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'july', 'agust
 </html>
 
 
+
     <div class="row">
         <div class="col-md-4">
             <!-- Dropdown form to select balita and month -->
@@ -202,4 +203,4 @@ $months = ['january', 'febuary', 'maret', 'april', 'mei', 'juni', 'july', 'agust
     </div>
 </div>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer_dashboard.php'; ?>
