@@ -17,6 +17,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Arahkan ke halaman login
-header('Location: ../login/login.php');
+header('Location: login.php');
 exit;
 ?>

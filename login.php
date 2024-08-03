@@ -1,21 +1,22 @@
-<?php
-session_start();
-require_once __DIR__ . '/../config/config.php';
+<?php 
+session_start(); 
+require_once __DIR__ . '/config/config.php'; // Ubah path ke config.php
+
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
+    
     $sql = "SELECT * FROM admin WHERE username = :username";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        header('Location: ../views/index.php');
+        header('Location: views/index.php'); // Ubah path ke index.php
         exit;
     } else {
         $error = "Username atau password salah.";
