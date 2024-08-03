@@ -1,17 +1,26 @@
 <?php
 // config/config.php
 
-define('DB_PATH', 'C:\xampp\htdocs\website_posyandu\database.sqlite');
+// Aktifkan error reporting untuk debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Definisikan path database
+define('DB_PATH', __DIR__ . '/../database.sqlite');
 
 try {
+    // Inisialisasi koneksi database
     $db = new PDO('sqlite:' . DB_PATH);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    
+    // Buat tabel jika belum ada
     createTables($db);
 } catch(PDOException $e) {
     die("Koneksi database gagal: " . $e->getMessage());
 }
 
+// Fungsi query umum
 function query($sql, $params = []) {
     global $db;
     $stmt = $db->prepare($sql);
@@ -19,19 +28,23 @@ function query($sql, $params = []) {
     return $stmt;
 }
 
+// Fungsi untuk mengambil semua hasil
 function fetchAll($result) {
     return $result->fetchAll();
 }
 
+// Fungsi untuk mengambil satu hasil
 function fetchOne($result) {
     return $result->fetch();
 }
 
+// Fungsi untuk escape string
 function escapeString($string) {
     global $db;
     return $db->quote($string);
 }
 
+// Fungsi untuk mendapatkan data balita dan pengukuran
 function getBalitaAndPengukuran($db, $id_balita) {
     $sql = "SELECT b.*, p.id_pengukuran, p.tanggal_pengukuran, p.berat_badan, p.tinggi_badan, p.status_gizi, p.bulan
             FROM balita b
@@ -42,6 +55,7 @@ function getBalitaAndPengukuran($db, $id_balita) {
     return $stmt->fetchAll();
 }
 
+// Fungsi untuk mendapatkan pengukuran berdasarkan bulan
 function getPengukuranByBulan($db, $id_balita, $bulan) {
     $sql = "SELECT * FROM pengukuran_balita
             WHERE id_balita = :id_balita AND bulan = :bulan";
@@ -50,13 +64,15 @@ function getPengukuranByBulan($db, $id_balita, $bulan) {
     return $stmt->fetchAll();
 }
 
+// Fungsi untuk validasi password
 function validatePassword($password) {
     $regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
     return preg_match($regex, $password);
 }
 
+// Fungsi untuk membuat tabel
 function createTables($db) {
-    // Create admin table
+    // Buat tabel admin
     $sql = "CREATE TABLE IF NOT EXISTS admin (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT NOT NULL UNIQUE,
@@ -64,7 +80,7 @@ function createTables($db) {
     )";
     $db->exec($sql);
 
-    // Create tasks table
+    // Buat tabel tasks
     $sql = "CREATE TABLE IF NOT EXISTS tasks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         task TEXT NOT NULL,
@@ -72,14 +88,16 @@ function createTables($db) {
     )";
     $db->exec($sql);
 
-    // Add more table creation statements here if needed
+    // Tambahkan pembuatan tabel lain jika diperlukan
 }
 
+// Fungsi untuk mendapatkan koneksi database
 function getDbConnection() {
     global $db;
     return $db;
 }
 
+// Fungsi untuk menambahkan admin
 function addAdmin($username, $password) {
     global $db;
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -88,6 +106,7 @@ function addAdmin($username, $password) {
     return $stmt->execute([':username' => $username, ':password' => $hashedPassword]);
 }
 
+// Fungsi untuk verifikasi login admin
 function verifyAdminLogin($username, $password) {
     global $db;
     $sql = "SELECT * FROM admin WHERE username = :username";
@@ -100,3 +119,5 @@ function verifyAdminLogin($username, $password) {
     }
     return false;
 }
+
+// Anda dapat menambahkan fungsi-fungsi lain yang diperlukan di sini

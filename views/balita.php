@@ -23,6 +23,7 @@ $balitas = $db->query("SELECT id_balita, nama_balita FROM balita")->fetchAll(PDO
 // List of months for dropdown
 $months = ['january', 'february', 'maret', 'april', 'mei', 'juni', 'july', 'agustus', 'september', 'oktober', 'november', 'desember'];
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
