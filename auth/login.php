@@ -14,6 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Username atau password salah";
     }
 }
+
+if (isset($_SESSION['success_message'])) {
+    $success_message = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,12 +46,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <div class="login-form">
             <h2 class="text-center mb-4">Login Posyandu</h2>
+            <?php if (isset($success_message)): ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $success_message; ?>
+                </div>
+            <?php endif; ?>
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger" role="alert">
                     <?php echo $error; ?>
                 </div>
             <?php endif; ?>
-    
+
             <form method="POST">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -56,7 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
             </form>
             <div class="text-center mt-3">
                 <a href="../index.php">Kembali ke Beranda</a>
