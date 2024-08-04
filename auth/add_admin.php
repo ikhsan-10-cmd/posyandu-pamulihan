@@ -1,33 +1,23 @@
 <?php
+session_start();
 require_once __DIR__ . '/../config/config.php';
-
-function usernameExists($username) {
-    global $db;
-    $stmt = $db->prepare("SELECT COUNT(*) FROM admin WHERE username = :username");
-    $stmt->execute([':username' => $username]);
-    return $stmt->fetchColumn() > 0;
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-    
-    if (empty($username) || empty($password)) {
-        $error = "Username dan password harus diisi";
-    } elseif ($password !== $confirm_password) {
-        $error = "Password dan konfirmasi password tidak cocok";
-    } elseif (!validatePassword($password)) {
-        $error = "Password harus memiliki minimal 8 karakter, termasuk huruf besar, huruf kecil, angka, dan karakter khusus";
-    } elseif (usernameExists($username)) {
-        $error = "Username sudah digunakan";
+
+    if (verifyAdminLogin($username, $password)) {
+        $_SESSION['user'] = $username;
+        header('Location: ../views/dashboard.php');
+        exit;
     } else {
-        if (addAdmin($username, $password)) {
-            $success = "Admin baru berhasil ditambahkan";
-        } else {
-            $error = "Gagal menambahkan admin baru";
-        }
+        $error = "Username atau password salah";
     }
+}
+
+if (isset($_SESSION['success_message'])) {
+    $success_message = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
 }
 ?>
 
@@ -36,33 +26,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Admin - Posyandu Desa Pamulihan</title>
+    <title>Login - Posyandu Desa Pamulihan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Tambah Admin Baru</h2>
-        <?php if (isset($error)): ?>
-            <div class="alert alert-danger"><?php echo $error; ?></div>
-        <?php endif; ?>
-        <?php if (isset($success)): ?>
-            <div class="alert alert-success"><?php echo $success; ?></div>
-        <?php endif; ?>
-        <form method="POST">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+    <div class="container">
+        <div class="login-form">
+            <h2 class="text-center mb-4">Login Posyandu</h2>
+            <?php if (isset($success_message)): ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $success_message; ?>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($error)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+            <?php endif; ?>
+            <div class="alert alert-info" role="alert">
+                Jika Anda lupa username dan password, gunakan akun default:<br>
+                Username: <?php echo DEFAULT_ADMIN_USERNAME; ?><br>
+                Password: <?php echo DEFAULT_ADMIN_PASSWORD; ?>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <a href="../index.php">Kembali ke Beranda</a>
             </div>
-            <div class="mb-3">
-                <label for="confirm_password" class="form-label">Konfirmasi Password</label>
-                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Tambah Admin</button>
-        </form>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
