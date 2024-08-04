@@ -1,6 +1,13 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 
+function usernameExists($username) {
+    global $db;
+    $stmt = $db->prepare("SELECT COUNT(*) FROM admin WHERE username = :username");
+    $stmt->execute([':username' => $username]);
+    return $stmt->fetchColumn() > 0;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
@@ -12,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Password dan konfirmasi password tidak cocok";
     } elseif (!validatePassword($password)) {
         $error = "Password harus memiliki minimal 8 karakter, termasuk huruf besar, huruf kecil, angka, dan karakter khusus";
+    } elseif (usernameExists($username)) {
+        $error = "Username sudah digunakan";
     } else {
         if (addAdmin($username, $password)) {
             $success = "Admin baru berhasil ditambahkan";

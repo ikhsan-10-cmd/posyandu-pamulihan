@@ -22,10 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Posyandu Desa Pamulihan</title>
-    
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <style>
         body {
             background-color: #f8f9fa;
@@ -49,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <?php echo $error; ?>
                 </div>
             <?php endif; ?>
+    
             <form method="POST">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -65,8 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap Bundle dengan Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

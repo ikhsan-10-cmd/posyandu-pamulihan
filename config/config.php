@@ -5,8 +5,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Definisikan path database
+// Definisikan path database dan admin default
 define('DB_PATH', __DIR__ . '/../database.sqlite');
+define('DEFAULT_ADMIN_USERNAME', 'admin');
+define('DEFAULT_ADMIN_PASSWORD', 'Admin@123');
 
 try {
     // Inisialisasi koneksi database
@@ -16,8 +18,46 @@ try {
     
     // Buat tabel jika belum ada
     createTables($db);
+    // Tambahkan admin default
+    addDefaultAdmin($db);
 } catch(PDOException $e) {
     die("Koneksi database gagal: " . $e->getMessage());
+}
+
+// Fungsi untuk membuat tabel
+function createTables($db) {
+    // Buat tabel admin
+    $sql = "CREATE TABLE IF NOT EXISTS admin (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL,
+        is_default BOOLEAN DEFAULT 0
+    )";
+    $db->exec($sql);
+
+    // Buat tabel tasks
+    $sql = "CREATE TABLE IF NOT EXISTS tasks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        task TEXT NOT NULL,
+        due_date DATE NOT NULL
+    )";
+    $db->exec($sql);
+
+    // Tambahkan pembuatan tabel lain jika diperlukan
+}
+
+// Fungsi untuk menambahkan admin default
+function addDefaultAdmin($db) {
+    $stmt = $db->prepare("SELECT COUNT(*) FROM admin WHERE username = :username");
+    $stmt->execute([':username' => DEFAULT_ADMIN_USERNAME]);
+    $count = $stmt->fetchColumn();
+    
+    if ($count == 0) {
+        $hashedPassword = password_hash(DEFAULT_ADMIN_PASSWORD, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO admin (username, password, is_default) VALUES (:username, :password, 1)";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':username' => DEFAULT_ADMIN_USERNAME, ':password' => $hashedPassword]);
+    }
 }
 
 // Fungsi query umum
@@ -70,27 +110,6 @@ function validatePassword($password) {
     return preg_match($regex, $password);
 }
 
-// Fungsi untuk membuat tabel
-function createTables($db) {
-    // Buat tabel admin
-    $sql = "CREATE TABLE IF NOT EXISTS admin (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT NOT NULL UNIQUE,
-        password TEXT NOT NULL
-    )";
-    $db->exec($sql);
-
-    // Buat tabel tasks
-    $sql = "CREATE TABLE IF NOT EXISTS tasks (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        task TEXT NOT NULL,
-        due_date DATE NOT NULL
-    )";
-    $db->exec($sql);
-
-    // Tambahkan pembuatan tabel lain jika diperlukan
-}
-
 // Fungsi untuk mendapatkan koneksi database
 function getDbConnection() {
     global $db;
@@ -109,6 +128,10 @@ function addAdmin($username, $password) {
 // Fungsi untuk verifikasi login admin
 function verifyAdminLogin($username, $password) {
     global $db;
+    if ($username === DEFAULT_ADMIN_USERNAME && $password === DEFAULT_ADMIN_PASSWORD) {
+        return true;
+    }
+    
     $sql = "SELECT * FROM admin WHERE username = :username";
     $stmt = $db->prepare($sql);
     $stmt->execute([':username' => $username]);
