@@ -133,7 +133,7 @@ require_once __DIR__ . '/../includes/h_admin/header_dashboard.php';
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title"><i class="fas fa-database me-2"></i>Posyandu Cempaka 4</h5>
                         <p class="card-text flex-grow-1">Informasi tentang balita dan ibu hamil yang terdaftar di Posyandu Cempaka 4.</p>
-                        <a href="../posyandu_3/dashboard_p3.php" class="btn btn-primary mt-auto">Masuk Ke Posyandu Cempaka 4</a>
+                        <a href="../posyandu_4/dashboard_p4.php" class="btn btn-primary mt-auto">Masuk Ke Posyandu Cempaka 4</a>
                     </div>
                 </div>
             </div>
