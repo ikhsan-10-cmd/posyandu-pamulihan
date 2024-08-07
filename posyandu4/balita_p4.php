@@ -11,7 +11,7 @@ if (!isset($_SESSION['user'])) {
 
 // Handle form submission
 $id_balita = isset($_POST['id_balita']) ? (int)$_POST['id_balita'] : 1;
-$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : 'maret'; // Default to March
+$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : 'januari'; 
 
 // Fetch data for the selected id_balita and bulan
 $balitaData = getBalita4AndPengukuran($db, $id_balita);
