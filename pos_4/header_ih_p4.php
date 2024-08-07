@@ -56,16 +56,16 @@ function isActive($page) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('dashboard.php'); ?>" href="../posyandu_4/dashboard_p4.php"><i class="fas fa-home"></i> Dashboard</a>
+                        <a class="nav-link <?php echo isActive('dashboard.php'); ?>" href="../posyandu4/dashboard_p4.php"><i class="fas fa-home"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('ibuhamil_p4.php'); ?>" href="../posyandu_4/ibuhamil_p4.php"><i class="fas fa-female"></i> Data Ibu Hamil</a>
+                        <a class="nav-link <?php echo isActive('ibuhamil_p4.php'); ?>" href="../posyandu4/ibuhamil_p4.php"><i class="fas fa-female"></i> Data Ibu Hamil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('ibuhamil_daftar_p4.php'); ?>" href="../posyandu_4/ibuhamil_daftar_p4.php"><i class="fas fa-user-edit"></i> Daftar Ibu Hamil</a>
+                        <a class="nav-link <?php echo isActive('ibuhamil_daftar_p4.php'); ?>" href="../posyandu4/ibuhamil_daftar_p4.php"><i class="fas fa-user-edit"></i> Daftar Ibu Hamil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('ibuhamil_crud_p4.php'); ?>" href="../posyandu_4/ibuhamil_crud_p4.php"><i class="fas fa-ruler"></i> Catatan Ibu Hamil</a>
+                        <a class="nav-link <?php echo isActive('ibuhamil_crud_p4.php'); ?>" href="../posyandu4/ibuhamil_crud_p4.php"><i class="fas fa-ruler"></i> Catatan Ibu Hamil</a>
                     </li>
             
                 </ul>

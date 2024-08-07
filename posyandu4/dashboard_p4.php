@@ -17,7 +17,7 @@ require_once __DIR__ . '/../pos_4/header_p4.php';
                     <i class="fas fa-baby card-icon text-primary"></i>
                     <h5 class="card-title">Data Balita</h5>
                     <p class="card-text">Lihat dan kelola data balita di Posyandu Desa Pamulihan.</p>
-                    <a href="../posyandu_4/balita_p4.php" class="btn btn-primary btn-lg mt-3">
+                    <a href="../posyandu4/balita_p4.php" class="btn btn-primary btn-lg mt-3">
                         <i class="fas fa-arrow-right me-2"></i>Masuk
                     </a>
                 </div>
@@ -29,7 +29,7 @@ require_once __DIR__ . '/../pos_4/header_p4.php';
                     <i class="fas fa-female card-icon text-danger"></i>
                     <h5 class="card-title">Data Ibu Hamil</h5>
                     <p class="card-text">Lihat dan kelola data ibu hamil di Posyandu Desa Pamulihan.</p>
-                    <a href="../posyandu_4/ibuhamil_p4.php" class="btn btn-primary btn-lg mt-3">
+                    <a href="../posyandu4/ibuhamil_p4.php" class="btn btn-primary btn-lg mt-3">
                         <i class="fas fa-arrow-right me-2"></i>Masuk
                     </a>
                 </div>

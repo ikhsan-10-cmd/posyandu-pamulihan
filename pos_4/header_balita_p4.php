@@ -56,16 +56,16 @@ function isActive($page) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('dashboard.php'); ?>" href="../posyandu_4/dashboard_p4.php"><i class="fas fa-home"></i> Dashboard</a>
+                        <a class="nav-link <?php echo isActive('dashboard.php'); ?>" href="../posyandu4/dashboard_p4.php"><i class="fas fa-home"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('balita_p4.php'); ?>" href="../posyandu_4/balita_p4.php"><i class="fas fa-baby"></i> Data Balita</a>
+                        <a class="nav-link <?php echo isActive('balita_p4.php'); ?>" href="../posyandu4/balita_p4.php"><i class="fas fa-baby"></i> Data Balita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('balita_daftar_p4.php'); ?>" href="../posyandu_4/balita_daftar_p4.php"><i class="fas fa-user-edit"></i> Daftar Balita</a>
+                        <a class="nav-link <?php echo isActive('balita_daftar_p4.php'); ?>" href="../posyandu4/balita_daftar_p4.php"><i class="fas fa-user-edit"></i> Daftar Balita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('balita_crud_p4.php'); ?>" href="../posyandu_4/balita_crud_p4.php"><i class="fas fa-ruler"></i> pengukuran Balita</a>
+                        <a class="nav-link <?php echo isActive('balita_crud_p4.php'); ?>" href="../posyandu4/balita_crud_p4.php"><i class="fas fa-ruler"></i> pengukuran Balita</a>
                     </li>
             
                 </ul>
