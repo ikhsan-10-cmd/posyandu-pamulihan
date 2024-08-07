@@ -56,7 +56,7 @@ function isActive($page) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('dashboard_p4.php'); ?>" href="../posyandu_4/dashboard_p4.php"><i class="fas fa-home"></i> Dashboard</a>
+                        <a class="nav-link <?php echo isActive('dashboard.php'); ?>" href="../posyandu_4/dashboard_p4.php"><i class="fas fa-home"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo isActive('balita_p4.php'); ?>" href="../posyandu_4/balita_p4.php"><i class="fas fa-baby"></i> Data Balita</a>
