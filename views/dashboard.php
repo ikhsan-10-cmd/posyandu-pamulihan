@@ -4,7 +4,7 @@ if (!isset($_SESSION['user'])) {
     header('Location: ../auth/login.php');
     exit;
 }
-require_once __DIR__ . '/../includes/header_dashboard.php';
+require_once __DIR__ . '/../includes/h_admin/header_dashboard.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -104,36 +104,36 @@ require_once __DIR__ . '/../includes/header_dashboard.php';
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card section-card h-100">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title"><i class="fas fa-baby me-2"></i>Data Balita</h5>
-                        <p class="card-text flex-grow-1">Informasi tentang anak-anak di bawah lima tahun yang terdaftar di Posyandu.</p>
-                        <a href="../views/balita.php" class="btn btn-primary mt-auto">Lihat Data Balita</a>
+                        <h5 class="card-title"><i class="fas fa-database me-2"></i>Posyandu Cempaka 1</h5>
+                        <p class="card-text flex-grow-1">Informasi tentang balita dan ibu hamil yang terdaftar di Posyandu Cempaka 1.</p>
+                        <a href="../posyandu_1/dashboard_p1.php" class="btn btn-primary mt-auto">Masuk Ke Posyandu Cempaka 1</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card section-card h-100">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title"><i class="fas fa-user-edit me-2"></i>Manajemen Balita</h5>
-                        <p class="card-text flex-grow-1">Tambah, edit, atau hapus data balita sesuai dengan perkembangan terbaru.</p>
-                        <a href="../crud/balita_crud.php" class="btn btn-primary mt-auto">Kelola Data Balita</a>
+                        <h5 class="card-title"><i class="fas fa-database me-2"></i>Posyandu Cempaka 2</h5>
+                        <p class="card-text flex-grow-1">Informasi tentang balita dan ibu hamil yang terdaftar di Posyandu Cempaka 2.</p>
+                        <a href="../posyandu_2/dashboard_p2.php" class="btn btn-primary mt-auto">Masuk Ke Posyandu Cempaka 2</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card section-card h-100">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title"><i class="fas fa-ruler me-2"></i>Pengukuran Balita</h5>
-                        <p class="card-text flex-grow-1">Catat perkembangan fisik balita, termasuk berat badan, tinggi badan, dan lingkar kepala.</p>
-                        <a href="../crud/balita_detail.php" class="btn btn-primary mt-auto">Catat Pengukuran</a>
+                        <h5 class="card-title"><i class="fas fa-database me-2"></i>Posyandu Cempaka 3</h5>
+                        <p class="card-text flex-grow-1">Informasi tentang balita dan ibu hamil yang terdaftar di Posyandu Cempaka 3.</p>
+                        <a href="../posyandu_3/dashboard_p3.php" class="btn btn-primary mt-auto">Masuk Ke Posyandu Cempaka 3</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card section-card h-100">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title"><i class="fas fa-tasks me-2"></i>Tugas</h5>
-                        <p class="card-text flex-grow-1">Kelola dan lacak berbagai kegiatan Posyandu seperti jadwal imunisasi dan penyuluhan.</p>
-                        <a href="../views/tasks.php" class="btn btn-primary mt-auto">Lihat Tugas</a>
+                        <h5 class="card-title"><i class="fas fa-database me-2"></i>Posyandu Cempaka 4</h5>
+                        <p class="card-text flex-grow-1">Informasi tentang balita dan ibu hamil yang terdaftar di Posyandu Cempaka 4.</p>
+                        <a href="../posyandu_4/dashboard_p4.php" class="btn btn-primary mt-auto">Masuk Ke Posyandu Cempaka 4</a>
                     </div>
                 </div>
             </div>
@@ -145,5 +145,5 @@ require_once __DIR__ . '/../includes/header_dashboard.php';
 </html>
 
 <?php
-require_once __DIR__ . '/../includes/footer_dashboard.php';
+require_once __DIR__ . '/../includes/h_admin/footer_dashboard.php';
 ?>

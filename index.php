@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . '/config/config.php';
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/h_user/header.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -203,4 +204,4 @@ require_once __DIR__ . '/includes/header.php';
 </body>
 </html>
 
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/h_user/footer.php'; ?>

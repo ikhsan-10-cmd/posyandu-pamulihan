@@ -1,0 +1,233 @@
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 28
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 29
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 27
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 29
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 30
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 25
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 24
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 31
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 23
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 22
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 32
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 33
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 34
+)
+Array
+(
+    [action] => add
+    [nama_ibu_hamil] => sadsada
+    [nik] => 32080362051900031
+    [tempat_tanggal_lahir_ibu] => Kuningan 1995-08-07
+    [nama_suami] => Andi Wijoyo
+    [nik_suami] => 211213213123131
+    [tempat_tanggal_lahir_suami] => Kuningan 1993-05-05
+    [alamat] => sadaljdlkajdlad
+)
+Array
+(
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 35
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+    [action] => delete
+    [id_ibu] => 21
+)
+Array
+(
+)

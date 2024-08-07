@@ -1,8 +1,12 @@
 <?php
+
+require_once __DIR__ . '/../config/config.php';
+
 // Pastikan sesi sudah dimulai
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 
 // Periksa apakah pengguna sudah login
 if (!isset($_SESSION['user'])) {
@@ -17,7 +21,6 @@ function isActive($page) {
     return (basename($_SERVER['PHP_SELF']) == $page) ? 'active' : '';
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -53,29 +56,18 @@ function isActive($page) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('dashboard.php'); ?>" href="../views/dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
+                        <a class="nav-link <?php echo isActive('dashboard_p3.php'); ?>" href="../posyandu_3/dashboard_p3.php"><i class="fas fa-home"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('tasks.php'); ?>" href="../views/tasks.php"><i class="fas fa-tasks"></i> Tugas</a>
+                        <a class="nav-link <?php echo isActive('balita_p3.php'); ?>" href="../posyandu_3/balita_p3.php"><i class="fas fa-baby"></i> Data Balita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('balita.php'); ?>" href="../views/balita.php"><i class="fas fa-baby"></i> Data Balita</a>
+                        <a class="nav-link <?php echo isActive('balita_daftar_p3.php'); ?>" href="../posyandu_3/balita_daftar_p3.php"><i class="fas fa-user-edit"></i> Daftar Balita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('balita_crud.php'); ?>" href="../crud/balita_crud.php"><i class="fas fa-user-edit"></i> Manajemen Balita</a>
+                        <a class="nav-link <?php echo isActive('balita_crud_p3.php'); ?>" href="../posyandu_3/balita_crud_p3.php"><i class="fas fa-ruler"></i> pengukuran Balita</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo isActive('balita_detail.php'); ?>" href="../crud/balita_detail.php"><i class="fas fa-ruler"></i> Pengukuran Balita</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
             
-                    <li class="nav-item">
-                        <a class="nav-link" href="../auth/add_admin.php"><i class="fas fa-key"></i> Tambah Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </li>
                 </ul>
             </div>
         </div>
